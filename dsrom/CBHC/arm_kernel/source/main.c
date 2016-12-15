@@ -149,11 +149,6 @@ int _main()
 	}
 
 	// change system.xml to syshax.xml
-	*(volatile u32*)(0x050600F0 - 0x05060000 + 0x08220000) = 0x79736861; //ysha
-	*(volatile u32*)(0x050600F4 - 0x05060000 + 0x08220000) = 0x782E786D; //x.xm
-
-	*(volatile u32*)(0x05060114 - 0x05060000 + 0x08220000) = 0x79736861; //ysha
-	*(volatile u32*)(0x05060118 - 0x05060000 + 0x08220000) = 0x782E786D; //x.xm
 
 	*(volatile u32*)(0x1555500) = 0;
 
