@@ -55,11 +55,6 @@ void kernel_launch_ios(u32 launch_address, u32 L, u32 C, u32 H)
 		section_write_word(ios_elf_start, 0x05054D70, 0xE12FFF1E); // bx lr
 
 		// change system.xml to syshax.xml
-		section_write_word(ios_elf_start, 0x050600F0, 0x79736861); //ysha
-		section_write_word(ios_elf_start, 0x050600F4, 0x782E786D); //x.xm
-
-		section_write_word(ios_elf_start, 0x05060114, 0x79736861); //ysha
-		section_write_word(ios_elf_start, 0x05060118, 0x782E786D); //x.xm
 
 		// overwrite mcp_d_r code with wupserver
 		section_write_word(ios_elf_start, 0x0510E56C, 0x47700000); //bx lr
