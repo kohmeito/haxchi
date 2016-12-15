@@ -518,32 +518,6 @@ int Menu_Main(void)
 #endif
 	char sdPath[256];
 
-#ifndef CB
-	sprintf(sdPath,"%s/config.txt",sdHaxchiPath);
-	if(IOSUHAX_FSA_OpenFile(fsaFd, sdPath, "rb", &sdFd) >= 0)
-	{
-		//read in sd file
-		fileStat_s stats;
-		IOSUHAX_FSA_StatFile(fsaFd, sdFd, &stats);
-		size_t cfgSize = stats.size;
-		uint8_t *cfgBuf = malloc(cfgSize);
-		fsa_read(fsaFd, sdFd, cfgBuf, cfgSize);
-		IOSUHAX_FSA_CloseFile(fsaFd, sdFd);
-		sdFd = -1;
-		//write to nand
-		sprintf(path,"%s/content/config.txt",SelectedGame->path);
-		if(IOSUHAX_FSA_OpenFile(fsaFd, path, "wb", &mlcFd) >= 0)
-		{
-			println(line++,"Writing config.txt...");
-			fsa_write(fsaFd, mlcFd, cfgBuf, cfgSize);
-			IOSUHAX_FSA_CloseFile(fsaFd, mlcFd);
-			mlcFd = -1;
-			//make it readable by game
-			IOSUHAX_FSA_ChangeMode(fsaFd, path, 0x644);
-		}
-		free(cfgBuf);
-	}
-#endif
 
 	sprintf(sdPath,"%s/title.txt",sdHaxchiPath);
 	if(IOSUHAX_FSA_OpenFile(fsaFd, sdPath, "rb", &sdFd) >= 0)
