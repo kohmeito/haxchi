@@ -7,7 +7,7 @@ echo.
 echo Building DS ROMs
 echo.
 make clean
-make Windows_NT=1
+make Windows_NT=1 CB=1
 
 cd ../installer
 echo.
